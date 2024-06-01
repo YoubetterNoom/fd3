@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEPE GOLD</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #a0a390;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease;
+            overflow: hidden; /* Prevent scrollbar due to falling images */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .button {
+            text-decoration: none;
+            padding: 15px 25px;
+            background-color: #eaac00;
+            color: rgb(63, 63, 63);
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #725905;
+        }
+
+        .toggle-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .toggle-btn:hover {
+            background-color: #ffd72f;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100vh) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
+        }
+
+        .falling-img {
+            position: absolute;
+            top: -100px; /* Start above the viewport */
+            animation: fall linear infinite; /* Duration and easing will be set dynamically */
+        }
+    </style>
+</head>
+<body>
+    <img src="dollar.png" alt="Center Image">
+    <div class="buttons">
+        <a target="_blank" href="https://x.com/pepedollaronsol" class="button">Twitter</a>
+        <a target="_blank" href="https://t.me/pepedollarsolana" class="button">Telegram</a>
+        <a target="_blank" href="https://t.me/pepedollarsolana" class="button">Chart</a>
+        <a target="_blank" href="" class="button">Buy</a>
+    </div>
+    1 dollar pepe = 1 dollar
+
+    <script>
+        window.onload = function() {
+            // Function to create a falling image
+            function createFallingImage() {
+                const img = document.createElement('img');
+                img.src = 'PEPEA.png'; // Replace with your image path
+                img.classList.add('falling-img');
+
+                // Random size between 30px and 100px
+                const size = Math.random() * 70 + 30;
+                img.style.width = size + 'px';
+
+                // Random horizontal position
+                img.style.left = Math.random() * window.innerWidth + 'px';
+
+                // Random duration between 10s and 20s
+                const duration = Math.random() * 10 + 10;
+                img.style.animationDuration = duration + 's';
+
+                // Random rotation angle
+                const rotate = Math.random() * 360;
+                img.style.transform = `rotate(${rotate}deg)`;
+
+                document.body.appendChild(img);
+
+                // Remove the image after it falls
+                img.addEventListener('animationend', () => {
+                    img.remove();
+                });
+            }
+
+            // Create multiple falling images immediately
+            for (let i = 0; i < 10; i++) {
+                createFallingImage();
+            }
+
+            // Continue to create falling images at intervals
+            setInterval(createFallingImage, 700); // Adjust interval as needed
+        }
+    </script>
+</body>
+</html>
